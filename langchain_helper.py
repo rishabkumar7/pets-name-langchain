@@ -1,3 +1,4 @@
+import streamlit as st
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
@@ -7,11 +8,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-import os
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
-def generate_pet_name(animal_type, pet_color):
-    llm = OpenAI(temperature=0.7)
+def generate_pet_name(animal_type, pet_color, openai_api_key):
+    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
 
     prompt_template_name = PromptTemplate(
         input_variables = ['animal_type','pet_color'],
