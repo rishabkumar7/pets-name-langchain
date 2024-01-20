@@ -5,39 +5,20 @@ st.title("🐶 Pets Name Generator")
 
 animal_type = st.sidebar.selectbox("What is your pet?", ("Dog", "Cat", "Hamster", "Rat", "Snake", "Lizard", "Cow"))
 
+animal_labels = {
+    "Dog": "What color is your dog?",
+    "Cat": "What color is your cat?",
+    "Hamster": "What color is your hamster?",
+    "Rat": "What color is your rat?",
+    "Snake": "What color is your snake?",
+    "Lizard": "What color is your lizard?",
+    "Cow": "What color is your cow?",
+}
 
-if animal_type == "Dog":
-  pet_color = st.sidebar.text_area(
-    label="What color is your dog?",
-    max_chars=15
-    )
-
-if animal_type == "Cat":
-  pet_color = st.sidebar.text_area(
-    label="What color is your cat?",
-    max_chars=15
-    )
-
-if animal_type == "Hamster":
-  pet_color = st.sidebar.text_area(
-    label="What color is your hamster?",
-    max_chars = 15
-    )
-
-if animal_type == "Rat":
-  pet_color = st.sidebar.text_area(label="What color is your rat?", max_chars = 25)
-
-if animal_type == "Snake":
-  pet_color = st.sidebar.text_area(label="What color is your snake?", max_chars = 25)
-
-if animal_type == "Lizard":
-  pet_color = st.sidebar.text_area(
-    label="What color is your lizard?",
-    max_chars = 25
-    )
-
-if animal_type == "Cow":
-  pet_color = st.sidebar.text_area(label="What color is your cow?", max_chars = 25)
+pet_color = st.sidebar.text_area(
+    label=animal_labels[animal_type],
+    max_chars=25
+)
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="langchain_search_api_key_openai", type="password")
